@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Biblioteca Virtual de Minerales - Estilos personalizados
+   (el resto del diseño se resuelve con clases de Tailwind)
+   ========================================================================== */
+
+/* Base ------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.focus-ring:focus {
+  outline: 3px solid rgba(98, 88, 215, 0.28);
+  outline-offset: 2px;
+}
+
+/* Navegación ------------------------------------------------------------- */
+.nav-link.active {
+  color: #c4c0ff;
+}
+
+/* Hero / Slider ---------------------------------------------------------- */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Capa oscura para que el texto sea legible sobre la imagen */
+.hero-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 14, 24, 0.92) 0%,
+    rgba(8, 14, 24, 0.72) 42%,
+    rgba(8, 14, 24, 0.12) 100%
+  );
+}
+
+.hero-slide--1 {
+  background-image: url("https://images.unsplash.com/photo-1615485500704-8e990f9900f5?auto=format&fit=crop&w=2200&q=85");
+}
+
+.hero-slide--2 {
+  background-image: url("https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=2200&q=85");
+}
+
+.hero-slide--3 {
+  background-image: url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2200&q=85");
+}
+
+.dot.active {
+  background: #a5a0ff;
+  width: 28px;
+}
+
+/* Tarjetas de minerales -------------------------------------------------- */
+.mineral-card img {
+  transition: transform 0.55s ease;
+}
+
+.mineral-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Accesibilidad: respetar "reducir movimiento" --------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
